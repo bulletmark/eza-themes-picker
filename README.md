@@ -64,8 +64,7 @@ https://github.com/bulletmark/eza-themes-picker.
 
 ## Installation or Upgrade
 
-Python 3.9 or later is required. The easiest way to install and run
-`eza-themes-picker` is via [`uvx`][uvx]:
+The easiest way to install and run `eza-themes-picker` is via [`uvx`][uvx]:
 
 ```sh
 $ uvx eza-themes-picker
