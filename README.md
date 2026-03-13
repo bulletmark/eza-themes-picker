@@ -57,6 +57,8 @@ selection so you can easily try out different `eza` themes, e.g. by running
 `eza` in an adjacent terminal window. Press `<CR>` to quit when you are
 finished.
 
+This tool has been developed and tested on Linux but should work on other platforms.
+
 The latest version and documentation is available at
 https://github.com/bulletmark/eza-themes-picker.
 
