@@ -76,9 +76,9 @@ can alternately choose to install it formally using [`uv tool`][uvtool] or [`pip
 
 ## Initial Setup
 
-So that this tool knows where eza-theme theme source files are located on your
-system, you first need to symlink a theme as per the
-[instructions][eza-themes-instruct] for the [`eza-themes`][eza-themes] project.
+So that this tool knows where eza theme source files are located on your system,
+you first need to symlink a theme as per the [instructions][eza-themes-instruct]
+for the [`eza-themes`][eza-themes] project.
 
 You only need to do this once. After that, you just run `eza-themes-picker`
 anytime to select and change/activate eza themes.

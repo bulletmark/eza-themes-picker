@@ -16,8 +16,8 @@ PROG = Path(__file__).stem.replace('_', '-')
 THEMEFILE = platformdirs.user_config_path() / 'eza' / 'theme.yml'
 
 USAGE = f'''
-So that this tool knows where eza-theme theme source files are located on your
-system, you first need to symlink a theme as per the instructions at:
+So that this tool knows where eza theme source files are located on your system,
+you first need to symlink a theme as per the instructions at:
 
 https://github.com/eza-community/eza-themes#installation.
 
