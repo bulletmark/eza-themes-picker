@@ -117,6 +117,20 @@ options:
   -d, --delete  just delete any current theme symlink and exit
 ```
 
+## Command Default Options
+
+You can add default options to a personal configuration file
+`~/.config/eza-themes-picker-flags.conf` (depending on your platform). If that
+file exists then each line of options will be concatenated and automatically
+prepended to your `eza-themes-picker` command line arguments. Comments in the
+file (i.e. lines starting with a `#`) are ignored. Type `eza-themes-picker -h`
+to see all [supported options](#command-line-options).
+
+You don't really need to see any default options. However, you can use this to
+set `--once` as a default option if you prefer to always just select a single
+theme and immediately exit, or if you want to always specify the `themes_dir`
+directory.
+
 ## License
 
 Copyright (C) 2026 Mark Blakeney. This program is distributed under the

@@ -7,7 +7,7 @@ eza-themes project at https://github.com/eza-community/eza-themes.
 from __future__ import annotations
 
 import sys
-from argparse import ArgumentParser
+from argparse_from_file import ArgumentParser
 from pathlib import Path
 
 import platformdirs
