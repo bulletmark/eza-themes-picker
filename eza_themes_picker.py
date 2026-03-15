@@ -64,7 +64,7 @@ def main() -> str | None:
         '-1',
         '--once',
         action='store_true',
-        help='just prompt for a single theme selection and exit (instead of looping until <CR>)',
+        help='just prompt for a single theme selection and then exit (instead of looping until <CR>)',
     )
 
     opt.add_argument(

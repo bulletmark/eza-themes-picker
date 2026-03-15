@@ -112,8 +112,8 @@ positional arguments:
 
 options:
   -h, --help    show this help message and exit
-  -1, --once    just prompt for a single theme selection and exit (instead of
-                looping until <CR>)
+  -1, --once    just prompt for a single theme selection and then exit
+                (instead of looping until <CR>)
   -d, --delete  just delete any current theme symlink and exit
 ```
 
