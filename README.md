@@ -115,6 +115,9 @@ options:
   -1, --once    just prompt for a single theme selection and then exit
                 (instead of looping until <CR>)
   -d, --delete  just delete any current theme symlink and exit
+
+Note you can set default starting options in ~/.config/eza-themes-picker-
+flags.conf.
 ```
 
 ## Command Default Options
