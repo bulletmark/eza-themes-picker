@@ -65,7 +65,8 @@ https://github.com/bulletmark/eza-themes-picker.
 
 ## Installation or Upgrade
 
-The easiest way to install and run `eza-themes-picker` is via [`uvx`][uvx]:
+The easiest way to install and run `eza-themes-picker` is via [`uvx`][uvx].
+Ensure [uv][uv] is installed on your system and then run:
 
 ```sh
 $ uvx eza-themes-picker
@@ -151,6 +152,7 @@ License at <https://www.gnu.org/licenses/gpl-3.0.html> for more details.
 [eza-themes]: https://github.com/eza-community/eza-themes
 [eza-themes-instruct]: https://github.com/eza-community/eza-themes#installation
 [eza]: https://github.com/eza-community/eza
+[uv]: https://docs.astral.sh/uv/
 [uvx]: https://docs.astral.sh/uv/guides/tools/
 [pipx]: https://github.com/pypa/pipx
 [pipxu]: https://github.com/bulletmark/pipxu
