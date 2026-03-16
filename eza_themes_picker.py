@@ -82,25 +82,27 @@ def main() -> str | None:
 
     args = opt.parse_args()
 
-    active = THEMEFILE
+    if exists := THEMEFILE.is_file():
+        if not THEMEFILE.is_symlink():
+            return f'"{THEMEFILE}" exists but is not a symlink. Please remove or rename it.'
 
     if args.delete:
-        if not active.is_symlink():
+        if not exists:
             return 'No theme symlink to delete.'
 
-        tgt = unexpanduser(active.readlink())
-        active.unlink()
-        if not any(active.parent.iterdir()):
-            active.parent.rmdir()
+        tgt = unexpanduser(THEMEFILE.readlink())
+        THEMEFILE.unlink()
+        if not any(THEMEFILE.parent.iterdir()):
+            THEMEFILE.parent.rmdir()
 
         return f'Current theme symlink to "{tgt}" deleted.'
 
     if args.themes_dir:
         themes_dir = Path(args.themes_dir).expanduser().absolute()
-    elif not active.is_symlink():
+    elif not exists:
         return USAGE.strip()
     else:
-        themes_dir = active.resolve().parent
+        themes_dir = THEMEFILE.resolve().parent
 
     if not themes_dir.is_dir():
         return f'"{themes_dir}" is not a directory.'
@@ -112,9 +114,10 @@ def main() -> str | None:
     ws = max(len(theme.stem) for theme in themes)
 
     # Loop to facilitate the user experimenting with different themes
+    active = THEMEFILE.resolve() if exists else None
     while True:
         for i, theme in enumerate(themes, 1):
-            if THEMEFILE.is_symlink() and THEMEFILE.resolve() == theme:
+            if theme == active:
                 act = (ws - len(theme.stem)) * ' ' + ' (active)'
             else:
                 act = ''

@@ -130,10 +130,9 @@ prepended to your `eza-themes-picker` command line arguments. Comments in the
 file (i.e. lines starting with a `#`) are ignored. Type `eza-themes-picker -h`
 to see all [supported options](#command-line-options).
 
-You don't really need to see any default options. However, you can use this to
-set `--once` as a default option if you prefer to always just select a single
-theme and immediately exit, or if you want to always specify the `themes_dir`
-directory.
+You can use this to set `--once` as a default option if you prefer to always
+just select a single theme and immediately exit, and/or if you want to always
+specify the `themes_dir` directory.
 
 ## License
 
