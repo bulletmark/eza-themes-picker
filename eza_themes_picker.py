@@ -98,7 +98,11 @@ def main() -> str | None:
         return f'Current theme symlink to "{tgt}" deleted.'
 
     if args.themes_dir:
-        themes_dir = Path(args.themes_dir).expanduser().absolute()
+        try:
+            themes_dir = Path(args.themes_dir).expanduser().absolute()
+        except Exception as e:
+            return f'Error resolving path "{args.themes_dir}": {e}'
+
     elif not exists:
         return USAGE.strip()
     else:
