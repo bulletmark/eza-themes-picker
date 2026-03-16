@@ -115,10 +115,12 @@ def main() -> str | None:
 
     # Loop to facilitate the user experimenting with different themes
     active = THEMEFILE.resolve() if exists else None
+    index = 0
     while True:
         for i, theme in enumerate(themes, 1):
             if theme == active:
                 act = (ws - len(theme.stem)) * ' ' + ' (active)'
+                index = i
             else:
                 act = ''
 
@@ -126,7 +128,7 @@ def main() -> str | None:
 
         try:
             answer = (
-                input('Select a theme by number (or <CR> to quit): ').strip().lower()
+                input('Select a theme by number (or <CR>=quit, n=next, p=prev): ').strip().lower()
             )
         except KeyboardInterrupt:
             print()
@@ -135,10 +137,17 @@ def main() -> str | None:
         if not answer or answer in {'q', 'x'}:
             break
 
-        if answer.isdigit():
+        if answer == 'n':
+            newtheme = themes[index % len(themes)]
+        elif answer == 'p':
+            newtheme = themes[(index - 2) % len(themes)]
+        elif answer.isdigit():
             newtheme = themes[int(answer) - 1]
-            if newtheme != active:
-                activate(active := newtheme)
+        else:
+            newtheme = None
+
+        if newtheme and newtheme != active:
+            activate(active := newtheme)
 
         if args.once:
             break

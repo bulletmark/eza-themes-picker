@@ -26,7 +26,7 @@ $ eza-themes-picker
 15: solarized-dark
 16: tokyonight
 17: white
-Select a theme by number (or <CR> to quit):
+Select a theme by number (or <CR>=quit, n=next, p=prev): 
 ```
 
 Press a number, e.g. `16` to change from `default` to `tokyonight`:
@@ -49,7 +49,7 @@ Press a number, e.g. `16` to change from `default` to `tokyonight`:
 15: solarized-dark
 16: tokyonight           (active)
 17: white
-Select a theme by number (or <CR> to quit):
+Select a theme by number (or <CR>=quit, n=next, p=prev): 
 ```
 
 The selected theme is now active and the program loops for further theme
