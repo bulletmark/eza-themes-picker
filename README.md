@@ -63,7 +63,7 @@ This tool has been developed and tested on Linux but should work on other platfo
 The latest version and documentation is available at
 https://github.com/bulletmark/eza-themes-picker.
 
-## Installation or Upgrade
+## Installation
 
 The easiest way to install and run `eza-themes-picker` is via [`uvx`][uvx].
 Ensure [uv][uv] is installed on your system and then run:
