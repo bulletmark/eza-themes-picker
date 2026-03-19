@@ -87,9 +87,12 @@ anytime to select and change/activate eza themes.
 
 Alternately, you can just run `eza-themes-picker <theme-dir>` to specify the
 theme source files directory explicitly as an argument, for first time usage,
-and `eza-themes-selector` will create the necessary symlink for you. Again, you
-only need to do this once and after that you can just run `eza-themes-selector`
-anytime to select and change/activate eza themes. E.g:
+and `eza-themes-picker` will create the necessary symlink for you. Again, you
+only need to do this once and after that you can just run `eza-themes-picker`
+anytime to select and change/activate eza themes.
+
+I.e. to install [`eza-themes`][eza-themes] from github and enable + start
+`eza-themes-picker` selection, do the following:
 
 ```sh
 $ git clone https://github.com/eza-community/eza-themes.git
