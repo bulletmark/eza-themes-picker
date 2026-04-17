@@ -1,4 +1,4 @@
-## EZA-THEMES-PICKER - Command line tool to select and activate themes from the eza-themes project
+## eza-themes-picker - Command line tool to select and activate themes from the eza-themes project
 
 [![PyPi](https://img.shields.io/pypi/v/eza-themes-picker)](https://pypi.org/project/eza-themes-picker/)
 
