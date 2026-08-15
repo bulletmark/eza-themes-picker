@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 Command line tool to select and activate eza themes from the community
 eza-themes project at https://github.com/eza-community/eza-themes.
@@ -7,10 +6,10 @@ eza-themes project at https://github.com/eza-community/eza-themes.
 from __future__ import annotations
 
 import sys
-from argparse_from_file import ArgumentParser
 from pathlib import Path
 
 import platformdirs
+from argparse_from_file import ArgumentParser
 
 PROG = Path(__file__).stem.replace('_', '-')
 THEMEFILE = platformdirs.user_config_path() / 'eza' / 'theme.yml'
@@ -82,9 +81,8 @@ def main() -> str | None:
 
     args = opt.parse_args()
 
-    if exists := THEMEFILE.is_file():
-        if not THEMEFILE.is_symlink():
-            return f'"{THEMEFILE}" exists but is not a symlink. Please remove or rename it.'
+    if (exists := THEMEFILE.is_file()) and not THEMEFILE.is_symlink():
+        return f'"{THEMEFILE}" exists but is not a symlink. Please remove or rename it.'
 
     if args.delete:
         if not exists:
@@ -132,7 +130,9 @@ def main() -> str | None:
 
         try:
             answer = (
-                input('Select a theme by number (or <CR>=quit, n=next, p=prev): ').strip().lower()
+                input('Select a theme by number (or <CR>=quit, n=next, p=prev): ')
+                .strip()
+                .lower()
             )
         except KeyboardInterrupt:
             print()
