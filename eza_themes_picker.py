@@ -36,10 +36,10 @@ $ {PROG} eza-themes/themes
 
 def unexpanduser(path: Path) -> Path:
     "Return path name, with $HOME replaced by ~ (opposite of Path.expanduser())"
-    home = Path.home()
-
-    if path.parts[: len(home.parts)] == home.parts:
-        return Path('~', *path.parts[len(home.parts) :])
+    startlen = len(hparts := Path.home().parts)
+    parts = path.parts
+    if parts[:startlen] == hparts:
+        path = Path('~', *parts[startlen:])
 
     return path
 
