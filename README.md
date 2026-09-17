@@ -19,17 +19,20 @@ $ eza-themes-picker
  8: frosty
  9: gruvbox-dark
 10: gruvbox-light
-11: one_dark
-12: rose-pine-dawn
-13: rose-pine-moon
-14: rose-pine
-15: solarized-dark
-16: tokyonight
-17: white
+11: kanagawa-dragon
+12: kanagawa-lotus
+13: kanagawa-wave
+14: one_dark
+15: rose-pine-dawn
+16: rose-pine-moon
+17: rose-pine
+18: solarized-dark
+19: tokyonight
+20: white
 Select a theme by number (or <CR>=quit, n=next, p=prev): 
 ```
 
-Press a number, e.g. `16` to change from `default` to `tokyonight`:
+Press a number, e.g. `19` to change from `default` to `tokyonight`:
 
 ```
  1: black
@@ -42,13 +45,16 @@ Press a number, e.g. `16` to change from `default` to `tokyonight`:
  8: frosty
  9: gruvbox-dark
 10: gruvbox-light
-11: one_dark
-12: rose-pine-dawn
-13: rose-pine-moon
-14: rose-pine
-15: solarized-dark
-16: tokyonight           (active)
-17: white
+11: kanagawa-dragon
+12: kanagawa-lotus
+13: kanagawa-wave
+14: one_dark
+15: rose-pine-dawn
+16: rose-pine-moon
+17: rose-pine
+18: solarized-dark
+19: tokyonight           (active)
+20: white
 Select a theme by number (or <CR>=quit, n=next, p=prev): 
 ```
 
