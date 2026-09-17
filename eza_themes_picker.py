@@ -5,6 +5,7 @@ eza-themes project at https://github.com/eza-community/eza-themes.
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -12,7 +13,8 @@ import platformdirs
 from argparse_from_file import ArgumentParser
 
 PROG = Path(__file__).stem.replace('_', '-')
-THEMEFILE = platformdirs.user_config_path() / 'eza' / 'theme.yml'
+THEMEDIR = os.getenv('EZA_CONFIG_DIR') or platformdirs.user_config_dir('eza')
+THEMEFILE = Path(THEMEDIR, 'theme.yml')
 
 USAGE = f'''
 So that this tool knows where eza theme source files are located on your system,
@@ -48,7 +50,7 @@ def activate(theme: Path) -> None:
     "Activate given theme"
     THEMEFILE.parent.mkdir(parents=True, exist_ok=True)
 
-    if THEMEFILE.is_file():
+    if THEMEFILE.is_symlink():
         THEMEFILE.unlink()
 
     THEMEFILE.symlink_to(theme)
@@ -81,27 +83,32 @@ def main() -> str | None:
 
     args = opt.parse_args()
 
-    if (exists := THEMEFILE.is_file()) and not THEMEFILE.is_symlink():
+    file_exists = THEMEFILE.is_file()
+    file_is_link = THEMEFILE.is_symlink()
+
+    if file_exists and not file_is_link:
         return f'"{THEMEFILE}" exists but is not a symlink. Please remove or rename it.'
 
     if args.delete:
-        if not exists:
+        if not file_is_link:
             return 'No theme symlink to delete.'
 
         tgt = unexpanduser(THEMEFILE.readlink())
         THEMEFILE.unlink()
-        if not any(THEMEFILE.parent.iterdir()):
+
+        if file_exists and not any(THEMEFILE.parent.iterdir()):
             THEMEFILE.parent.rmdir()
 
-        return f'Current theme symlink to "{tgt}" deleted.'
+        print(f'Current theme symlink "{tgt}" deleted.')
+        return None
 
     if args.themes_dir:
         try:
-            themes_dir = Path(args.themes_dir).expanduser().absolute()
+            themes_dir = Path(args.themes_dir).expanduser().resolve()
         except Exception as e:
             return f'Error resolving path "{args.themes_dir}": {e}'
 
-    elif not exists:
+    elif not file_exists:
         return USAGE.strip()
     else:
         themes_dir = THEMEFILE.resolve().parent
@@ -116,7 +123,7 @@ def main() -> str | None:
     ws = max(len(theme.stem) for theme in themes)
 
     # Loop to facilitate the user experimenting with different themes
-    active = THEMEFILE.resolve() if exists else None
+    active = THEMEFILE.resolve() if file_exists else None
     index = 0
     while True:
         for i, theme in enumerate(themes, 1):
@@ -134,7 +141,7 @@ def main() -> str | None:
                 .strip()
                 .lower()
             )
-        except KeyboardInterrupt:
+        except (KeyboardInterrupt, EOFError):
             print()
             break
 
@@ -146,6 +153,13 @@ def main() -> str | None:
         elif answer == 'p':
             newtheme = themes[(index - 2) % len(themes)]
         elif answer.isdigit():
+            if (n := int(answer)) < 1 or n > len(themes):
+                print(
+                    f'Invalid selection: {n}. Please select a number between 1 and {len(themes)}.',
+                    file=sys.stderr,
+                )
+                continue
+
             newtheme = themes[int(answer) - 1]
         else:
             newtheme = None
